@@ -47,7 +47,6 @@ async function createServer() {
     // Serve index.html for all non-API routes (SPA fallback)
     app.use('*path', async (req: Request, res: Response, next: NextFunction) => {
       const url = req.originalUrl
-      console.log('url', url)
 
       // Skip API routes
       if (url.startsWith('/api')) {
