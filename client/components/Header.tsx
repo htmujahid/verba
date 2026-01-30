@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import { AppBar, Box, Button, Chip, Toolbar, Typography } from '@mui/material'
+import { useQuery } from '@tanstack/react-query'
 
 import { API_ROUTES, APP_CONFIG, type HealthStatus } from '../../shared'
 
 export default function Header() {
-  const [health, setHealth] = useState<HealthStatus | null>(null)
-
-  useEffect(() => {
-    fetch(API_ROUTES.health)
-      .then(res => res.json())
-      .then(setHealth)
-  }, [])
+  const { data: health } = useQuery({
+    queryKey: ['health'],
+    queryFn: () =>
+      fetch(API_ROUTES.health).then((res) => res.json() as Promise<HealthStatus>),
+  })
 
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          {APP_CONFIG.appName}
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            {APP_CONFIG.appName}
+          </Link>
         </Typography>
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
           <Button
