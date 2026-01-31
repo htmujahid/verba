@@ -11,7 +11,7 @@ interface SignUpFormProps {
   onSuccess: (email: string) => void
 }
 
-export default function SignUpForm({ onSuccess }: SignUpFormProps) {
+export function SignUpForm({ onSuccess }: SignUpFormProps) {
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()
 

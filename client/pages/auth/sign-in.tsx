@@ -1,8 +1,8 @@
 import { Link as RouterLink } from 'react-router'
 import { Box, Divider, Link, Paper, Typography } from '@mui/material'
 
-import SignInForm from '@/client/components/auth/SignInForm'
-import SocialSignIn from '@/client/components/auth/SocialSignIn'
+import { SignInForm } from '@/client/components/auth/SignInForm'
+import { SocialSignIn } from '@/client/components/auth/SocialSignIn'
 
 export default function SignIn() {
   return (

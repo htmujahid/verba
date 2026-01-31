@@ -10,7 +10,7 @@ interface ForgotPasswordFormProps {
   onSuccess: (email: string) => void
 }
 
-export default function ForgotPasswordForm({ onSuccess }: ForgotPasswordFormProps) {
+export function ForgotPasswordForm({ onSuccess }: ForgotPasswordFormProps) {
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()
 

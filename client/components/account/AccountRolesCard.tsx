@@ -14,7 +14,7 @@ interface AccountRolesCardProps {
   role?: string | null
 }
 
-export default function AccountRolesCard({ role }: AccountRolesCardProps) {
+export function AccountRolesCard({ role }: AccountRolesCardProps) {
   return (
     <Card>
       <CardContent>

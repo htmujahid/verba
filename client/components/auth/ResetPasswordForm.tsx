@@ -11,7 +11,7 @@ interface ResetPasswordFormProps {
   onSuccess: () => void
 }
 
-export default function ResetPasswordForm({ token, onSuccess }: ResetPasswordFormProps) {
+export function ResetPasswordForm({ token, onSuccess }: ResetPasswordFormProps) {
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()
 

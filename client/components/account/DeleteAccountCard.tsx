@@ -21,7 +21,7 @@ import { authClient } from '@/client/lib/auth-client'
 
 const CONFIRMATION_TEXT = 'delete my account'
 
-export default function DeleteAccountCard() {
+export function DeleteAccountCard() {
   const navigate = useNavigate()
   const [isDeleting, startTransition] = useTransition()
   const [error, setError] = useState('')

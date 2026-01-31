@@ -2,11 +2,11 @@ import { Box, Typography, Paper } from '@mui/material'
 
 export default function About() {
   return (
-    <Box>
-      <Typography variant="h3" component="h1" gutterBottom fontWeight="bold">
+    <Box sx={{ maxWidth: 600, mx: 'auto' }}>
+      <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" textAlign="center">
         About
       </Typography>
-      <Paper sx={{ p: 3 }}>
+      <Paper sx={{ p: 4 }}>
         <Typography variant="body1" sx={{ mb: 2 }}>
           This is a React application built with Vite, Material-UI, and React Router.
         </Typography>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link as RouterLink, useSearchParams, useNavigate } from 'react-router'
 import { Box, Button, Link, Paper, Typography, Alert } from '@mui/material'
 
-import ResetPasswordForm from '@/client/components/auth/ResetPasswordForm'
+import { ResetPasswordForm } from '@/client/components/auth/ResetPasswordForm'
 
 export default function ResetPassword() {
   const navigate = useNavigate()

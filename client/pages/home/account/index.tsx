@@ -5,12 +5,12 @@ import SecurityIcon from '@mui/icons-material/Security'
 import WarningIcon from '@mui/icons-material/Warning'
 
 import { authClient } from '@/client/lib/auth-client'
-import ProfileImageCard from '@/client/components/account/ProfileImageCard'
-import AccountDetailsForm from '@/client/components/account/AccountDetailsForm'
-import AccountRolesCard from '@/client/components/account/AccountRolesCard'
-import ChangePasswordCard from '@/client/components/account/ChangePasswordCard'
-import SessionsCard from '@/client/components/account/SessionsCard'
-import DeleteAccountCard from '@/client/components/account/DeleteAccountCard'
+import { ProfileImageCard } from '@/client/components/account/ProfileImageCard'
+import { AccountDetailsForm } from '@/client/components/account/AccountDetailsForm'
+import { AccountRolesCard } from '@/client/components/account/AccountRolesCard'
+import { ChangePasswordCard } from '@/client/components/account/ChangePasswordCard'
+import { SessionsCard } from '@/client/components/account/SessionsCard'
+import { DeleteAccountCard } from '@/client/components/account/DeleteAccountCard'
 
 interface TabPanelProps {
   children?: React.ReactNode

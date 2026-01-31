@@ -22,7 +22,7 @@ interface PasswordFormData {
   confirmPassword: string
 }
 
-export default function ChangePasswordCard() {
+export function ChangePasswordCard() {
   const [isPending, startTransition] = useTransition()
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')

@@ -77,7 +77,7 @@ function formatDate(date: Date): string {
   }).format(new Date(date))
 }
 
-export default function SessionsCard() {
+export function SessionsCard() {
   const queryClient = useQueryClient()
   const [success, setSuccess] = useState('')
 

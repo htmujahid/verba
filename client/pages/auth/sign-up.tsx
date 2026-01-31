@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Link as RouterLink } from 'react-router'
 import { Box, Divider, Link, Paper, Typography, Alert } from '@mui/material'
 
-import SignUpForm from '@/client/components/auth/SignUpForm'
-import SocialSignIn from '@/client/components/auth/SocialSignIn'
+import { SignUpForm } from '@/client/components/auth/SignUpForm'
+import { SocialSignIn } from '@/client/components/auth/SocialSignIn'
 
 export default function SignUp() {
   const [successEmail, setSuccessEmail] = useState('')

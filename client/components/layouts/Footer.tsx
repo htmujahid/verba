@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 
 import { APP_CONFIG } from '../../../shared'
 
-export default function Footer() {
+export function Footer() {
   return (
     <Box
       component="footer"

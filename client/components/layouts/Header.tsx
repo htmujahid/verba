@@ -18,11 +18,11 @@ import HomeIcon from '@mui/icons-material/Home'
 import SettingsIcon from '@mui/icons-material/Settings'
 import LogoutIcon from '@mui/icons-material/Logout'
 
-import Logo from '@/client/components/Logo'
+import { Logo } from '@/client/components/Logo'
 import { authClient } from '@/client/lib/auth-client'
 import pathsConfig from '@/shared/config/paths.config'
 
-export default function Header() {
+export function Header() {
   const navigate = useNavigate()
   const { data: session, isPending } = authClient.useSession()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)

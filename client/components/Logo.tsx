@@ -7,7 +7,7 @@ interface LogoProps {
   color?: 'primary' | 'inherit'
 }
 
-export default function Logo({ size = 'medium', color = 'primary' }: LogoProps) {
+export function Logo({ size = 'medium', color = 'primary' }: LogoProps) {
   const sizes = {
     small: { icon: 24, text: 'h6' as const },
     medium: { icon: 32, text: 'h5' as const },

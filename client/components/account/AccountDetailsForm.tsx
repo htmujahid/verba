@@ -31,7 +31,7 @@ interface EmailFormData {
   email: string
 }
 
-export default function AccountDetailsForm({ user }: AccountDetailsFormProps) {
+export function AccountDetailsForm({ user }: AccountDetailsFormProps) {
   const [isUpdatingProfile, startProfileTransition] = useTransition()
   const [isUpdatingEmail, startEmailTransition] = useTransition()
 

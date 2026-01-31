@@ -4,7 +4,7 @@ import { Box, CircularProgress } from '@mui/material'
 import { authClient } from '@/client/lib/auth-client'
 import pathsConfig from '@/shared/config/paths.config'
 
-export default function ProtectedRoute() {
+export function ProtectedRoute() {
   const location = useLocation()
   const { data: session, isPending } = authClient.useSession()
 

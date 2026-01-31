@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from 'react-router'
 import { Box, CircularProgress } from '@mui/material'
 
-import Logo from '@/client/components/Logo'
+import { Logo } from '@/client/components/Logo'
 import { authClient } from '@/client/lib/auth-client'
 import pathsConfig from '@/shared/config/paths.config'
 
-export default function AuthLayout() {
+export function AuthLayout() {
   const { data: session, isPending } = authClient.useSession()
 
   if (isPending) {

@@ -26,7 +26,7 @@ interface ProfileImageCardProps {
   } | null
 }
 
-export default function ProfileImageCard({ user }: ProfileImageCardProps) {
+export function ProfileImageCard({ user }: ProfileImageCardProps) {
   const [isUploadingImage, setIsUploadingImage] = useState(false)
   const [imageError, setImageError] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)

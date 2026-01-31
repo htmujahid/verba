@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link as RouterLink } from 'react-router'
 import { Box, Link, Paper, Typography, Alert } from '@mui/material'
 
-import ForgotPasswordForm from '@/client/components/auth/ForgotPasswordForm'
+import { ForgotPasswordForm } from '@/client/components/auth/ForgotPasswordForm'
 
 export default function ForgotPassword() {
   const [successEmail, setSuccessEmail] = useState('')

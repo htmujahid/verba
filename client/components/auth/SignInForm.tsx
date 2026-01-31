@@ -8,7 +8,7 @@ import { authClient } from '@/client/lib/auth-client'
 import { signInSchema, type SignInFormData } from './schemas'
 import pathsConfig from '@/shared/config/paths.config'
 
-export default function SignInForm() {
+export function SignInForm() {
   const navigate = useNavigate()
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()

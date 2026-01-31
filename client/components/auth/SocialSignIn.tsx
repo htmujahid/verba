@@ -4,7 +4,7 @@ import { GitHub, Google } from '@mui/icons-material'
 import { authClient } from '@/client/lib/auth-client'
 import pathsConfig from '@/shared/config/paths.config'
 
-export default function SocialSignIn() {
+export function SocialSignIn() {
   const handleSocialSignIn = async (provider: 'github' | 'google') => {
     await authClient.signIn.social({
       provider,
