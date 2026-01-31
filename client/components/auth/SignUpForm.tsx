@@ -5,6 +5,7 @@ import { Box, Button, TextField, CircularProgress, Alert } from '@mui/material'
 
 import { authClient } from '@/client/lib/auth-client'
 import { signUpSchema, type SignUpFormData } from './schemas'
+import pathsConfig from '@/shared/config/paths.config'
 
 interface SignUpFormProps {
   onSuccess: (email: string) => void
@@ -30,6 +31,7 @@ export default function SignUpForm({ onSuccess }: SignUpFormProps) {
         name: data.name,
         email: data.email,
         password: data.password,
+        callbackURL: pathsConfig.app.home,
       })
 
       if (error) {

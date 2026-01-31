@@ -2,12 +2,13 @@ import { Box, Button } from '@mui/material'
 import { GitHub, Google } from '@mui/icons-material'
 
 import { authClient } from '@/client/lib/auth-client'
+import pathsConfig from '@/shared/config/paths.config'
 
 export default function SocialSignIn() {
   const handleSocialSignIn = async (provider: 'github' | 'google') => {
     await authClient.signIn.social({
       provider,
-      callbackURL: '/',
+      callbackURL: pathsConfig.app.home,
     })
   }
 

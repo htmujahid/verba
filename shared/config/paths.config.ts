@@ -10,7 +10,6 @@ const pathsConfig = {
       app: {
         home: '/home',
         account: '/home/account',
-        security: '/home/security',
         preferences: '/home/preferences',
       },
       admin: {

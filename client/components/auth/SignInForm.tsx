@@ -6,6 +6,7 @@ import { Box, Button, TextField, CircularProgress, Alert } from '@mui/material'
 
 import { authClient } from '@/client/lib/auth-client'
 import { signInSchema, type SignInFormData } from './schemas'
+import pathsConfig from '@/shared/config/paths.config'
 
 export default function SignInForm() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ export default function SignInForm() {
         return
       }
 
-      navigate('/')
+      navigate(pathsConfig.app.home)
     })
   }
 
