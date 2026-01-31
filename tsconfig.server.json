@@ -8,6 +8,10 @@
     "types": ["node"],
     "skipLibCheck": true,
     "outDir": "./dist/server",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
 
     /* Linting */
     "strict": true,

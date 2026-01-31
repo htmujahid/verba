@@ -1,9 +1,12 @@
+import 'dotenv/config'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express, { type Request, type Response, type NextFunction } from 'express'
 import type { ViteDevServer } from 'vite'
 import { API_ROUTES, APP_CONFIG, type HealthStatus } from '../shared/index.js'
+import { fromNodeHeaders, toNodeHandler } from 'better-auth/node'
+import { auth } from './lib/auth.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isProduction = process.env.NODE_ENV === 'production'
@@ -15,6 +18,15 @@ const clientDist = path.resolve(projectRoot, 'dist/client')
 
 async function createServer() {
   const app = express()
+
+  app.all("/api/auth/*path", toNodeHandler(auth)); // For ExpressJS v4
+
+  app.get("/api/me", async (req, res) => {
+    const session = await auth.api.getSession({
+      headers: fromNodeHeaders(req.headers),
+    });
+    return res.json(session);
+  });
 
   // Parse JSON for API routes
   app.use(express.json())

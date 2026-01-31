@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 
-import { APP_CONFIG } from '../../shared'
+import { APP_CONFIG } from '../../../shared'
 
 export default function Footer() {
   return (
