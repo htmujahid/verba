@@ -1,9 +1,10 @@
+"use client"
+
 import * as React from "react"
 
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -28,66 +29,60 @@ export function ModuleSwitcher({
   }[]
 }) {
   const { isMobile } = useSidebar()
-  const [activeModules, setActiveModules] = React.useState(modules[0])
-  if (!activeModules) {
+  const [activeModule, setActiveModule] = React.useState(modules[0])
+
+  if (!activeModule) {
     return null
   }
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger
-            render={
-              <SidebarMenuButton
-                size="lg"
-                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-              />
-            }
-          >
-            <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-              {activeModules.logo}
-            </div>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{activeModules.name}</span>
-              <span className="truncate text-xs">{activeModules.plan}</span>
-            </div>
-            <ChevronsUpDownIcon className="ml-auto" />
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                {activeModule.logo}
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-medium">{activeModule.name}</span>
+                <span className="truncate text-xs">{activeModule.plan}</span>
+              </div>
+              <ChevronsUpDownIcon className="ml-auto" />
+            </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="min-w-56 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             align="start"
             side={isMobile ? "bottom" : "right"}
             sideOffset={4}
           >
-            <DropdownMenuGroup>
-              <DropdownMenuLabel className="text-muted-foreground text-xs">
-                Modules
-              </DropdownMenuLabel>
-              {modules.map((module, index) => (
-                <DropdownMenuItem
-                  key={module.name}
-                  onClick={() => setActiveModules(module)}
-                  className="gap-2 p-2"
-                >
-                  <div className="flex size-6 items-center justify-center rounded-md border">
-                    {module.logo}
-                  </div>
-                  {module.name}
-                  <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem className="gap-2 p-2">
-                <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
-                  <PlusIcon className="size-4" />
+            <DropdownMenuLabel className="text-muted-foreground text-xs">
+              Modules
+            </DropdownMenuLabel>
+            {modules.map((module, index) => (
+              <DropdownMenuItem
+                key={module.name}
+                onClick={() => setActiveModule(module)}
+                className="gap-2 p-2"
+              >
+                <div className="flex size-6 items-center justify-center rounded-md border">
+                  {module.logo}
                 </div>
-                <div className="text-muted-foreground font-medium">
-                  Add module
-                </div>
+                {module.name}
+                <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
-            </DropdownMenuGroup>
+            ))}
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="gap-2 p-2">
+              <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
+                <PlusIcon className="size-4" />
+              </div>
+              <div className="text-muted-foreground font-medium">Add module</div>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
