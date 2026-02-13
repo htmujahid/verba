@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/client/components/ui/tabs'
 import { authClient } from '@/client/lib/auth-client'
 
 export default function AccountLayout() {
-  const { data: session, isPending } = authClient.useSession()
+  const { isPending } = authClient.useSession()
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -31,8 +31,8 @@ export default function AccountLayout() {
       <Tabs
         value={activeTab}
         onValueChange={(value) => {
-          if (value === 'profile') navigate('/home/account')
-          else navigate(`/home/account/${value}`)
+          if (value === 'profile') navigate('/account')
+          else navigate(`/account/${value}`)
         }}
       >
         <TabsList>

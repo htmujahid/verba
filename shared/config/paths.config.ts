@@ -9,7 +9,7 @@ const pathsConfig = {
       },
       app: {
         home: '/home',
-        account: '/home/account',
+        account: '/account',
         preferences: '/home/preferences',
       },
       admin: {
