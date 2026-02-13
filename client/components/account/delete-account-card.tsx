@@ -77,14 +77,12 @@ export function DeleteAccountCard() {
           )}
 
           <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogTrigger
-              render={
-                <Button variant="destructive" onClick={handleOpenDialog}>
-                  <Trash2Icon />
-                  Delete My Account
-                </Button>
-              }
-            />
+            <DialogTrigger asChild>
+              <Button variant="destructive" onClick={handleOpenDialog}>
+                <Trash2Icon />
+                Delete My Account
+              </Button>
+            </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">

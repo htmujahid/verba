@@ -147,13 +147,11 @@ export function SessionsCard() {
             <h3 className="text-base font-medium">Active Sessions</h3>
           </div>
           <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button variant="ghost" size="icon" onClick={() => refetch()} disabled={isLoading}>
-                  <RefreshCwIcon className="size-4" />
-                </Button>
-              }
-            />
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" onClick={() => refetch()} disabled={isLoading}>
+                <RefreshCwIcon className="size-4" />
+              </Button>
+            </TooltipTrigger>
             <TooltipContent>Refresh</TooltipContent>
           </Tooltip>
         </div>
@@ -220,8 +218,7 @@ export function SessionsCard() {
                     </div>
                     {!isCurrentSession && (
                       <Tooltip>
-                        <TooltipTrigger
-                          render={
+                        <TooltipTrigger asChild>
                             <Button
                               variant="ghost"
                               size="icon"
@@ -231,8 +228,7 @@ export function SessionsCard() {
                             >
                               <Trash2Icon className="size-4" />
                             </Button>
-                          }
-                        />
+                        </TooltipTrigger>
                         <TooltipContent>Revoke session</TooltipContent>
                       </Tooltip>
                     )}

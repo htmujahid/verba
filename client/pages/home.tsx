@@ -11,11 +11,11 @@ export default function Home() {
         This is the home page of the application.
       </p>
       <div className="flex justify-center gap-4">
-        <Button nativeButton={false} render={<Link to="/about" />}>
-          Learn About Us
+        <Button asChild>
+          <Link to="/about">Learn About Us</Link>
         </Button>
-        <Button variant="outline" nativeButton={false} render={<Link to="/contact" />}>
-          Contact Us
+        <Button variant="outline" asChild>
+          <Link to="/contact">Contact Us</Link>
         </Button>
       </div>
       <Card className="mx-auto mt-8 max-w-sm">

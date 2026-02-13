@@ -37,18 +37,16 @@ export function Header() {
         {!isPending && (
           user ? (
             <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <button className="cursor-pointer rounded-full outline-none">
-                    <Avatar>
-                      <AvatarImage src={user.image || undefined} alt={user.name || 'User'} />
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        {user.name?.charAt(0).toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                  </button>
-                }
-              />
+              <DropdownMenuTrigger asChild>
+                <button className="cursor-pointer rounded-full outline-none">
+                  <Avatar>
+                    <AvatarImage src={user.image || undefined} alt={user.name || 'User'} />
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {user.name?.charAt(0).toUpperCase()}
+                    </AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel className="flex flex-col gap-0.5 px-2 py-1.5">

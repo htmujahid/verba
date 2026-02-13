@@ -33,14 +33,8 @@ export default function Dashboard() {
               </Avatar>
               <h2 className="text-base font-medium">{user?.name}</h2>
               <p className="text-sm text-muted-foreground">{user?.email}</p>
-              <Button
-                variant="outline"
-                size="sm"
-                className="mt-4"
-                nativeButton={false}
-                render={<Link to={pathsConfig.app.account} />}
-              >
-                View Profile
+              <Button variant="outline" size="sm" className="mt-4" asChild>
+                <Link to={pathsConfig.app.account}>View Profile</Link>
               </Button>
             </CardContent>
           </Card>
@@ -51,9 +45,11 @@ export default function Dashboard() {
             <CardContent>
               <h2 className="mb-4 text-base font-medium">Quick Actions</h2>
               <div className="flex flex-wrap gap-2">
-                <Button nativeButton={false} render={<Link to={pathsConfig.app.account} />}>
-                  <SettingsIcon />
-                  Account Settings
+                <Button asChild>
+                  <Link to={pathsConfig.app.account}>
+                    <SettingsIcon />
+                    Account Settings
+                  </Link>
                 </Button>
                 <Button variant="outline">
                   <ClockIcon />
