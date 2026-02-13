@@ -1,27 +1,32 @@
-import { Box, Typography, TextField, Button, Paper, Stack } from '@mui/material'
+import { Card, CardContent } from '@/client/components/ui/card'
+import { Button } from '@/client/components/ui/button'
+import { Input } from '@/client/components/ui/input'
+import { Textarea } from '@/client/components/ui/textarea'
+import { Label } from '@/client/components/ui/label'
 
 export default function Contact() {
   return (
-    <Box sx={{ maxWidth: 500, mx: 'auto' }}>
-      <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" textAlign="center">
-        Contact
-      </Typography>
-      <Paper sx={{ p: 4 }}>
-        <Stack spacing={3}>
-          <TextField label="Name" variant="outlined" fullWidth />
-          <TextField label="Email" type="email" variant="outlined" fullWidth />
-          <TextField
-            label="Message"
-            variant="outlined"
-            fullWidth
-            multiline
-            rows={4}
-          />
-          <Button variant="contained" size="large">
+    <div className="mx-auto max-w-md">
+      <h1 className="mb-6 text-center text-4xl font-bold">Contact</h1>
+      <Card>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="contact-name">Name</Label>
+            <Input id="contact-name" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="contact-email">Email</Label>
+            <Input id="contact-email" type="email" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="contact-message">Message</Label>
+            <Textarea id="contact-message" rows={4} />
+          </div>
+          <Button size="lg" className="w-full">
             Send Message
           </Button>
-        </Stack>
-      </Paper>
-    </Box>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

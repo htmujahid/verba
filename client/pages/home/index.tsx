@@ -1,9 +1,9 @@
-import { Box, Typography, Card, CardContent, Grid, Avatar, Button, Stack } from '@mui/material'
-import { Link as RouterLink } from 'react-router'
-import PersonIcon from '@mui/icons-material/Person'
-import SettingsIcon from '@mui/icons-material/Settings'
-import HistoryIcon from '@mui/icons-material/History'
+import { Link } from 'react-router'
+import { UserIcon, SettingsIcon, ClockIcon } from 'lucide-react'
 
+import { Card, CardContent } from '@/client/components/ui/card'
+import { Button } from '@/client/components/ui/button'
+import { Avatar, AvatarFallback } from '@/client/components/ui/avatar'
 import { authClient } from '@/client/lib/auth-client'
 import pathsConfig from '@/shared/config/paths.config'
 
@@ -12,73 +12,69 @@ export default function Dashboard() {
   const user = session?.user
 
   return (
-    <Box>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" component="h1" fontWeight="bold" gutterBottom>
+    <div>
+      <div className="mb-8">
+        <h1 className="mb-2 text-2xl font-bold">
           Welcome back, {user?.name || 'User'}
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
+        </h1>
+        <p className="text-muted-foreground">
           Here's what's happening with your account today.
-        </Typography>
-      </Box>
+        </p>
+      </div>
 
-      <Grid container spacing={3}>
-        <Grid size={{ xs: 12, md: 4 }}>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+        <div className="md:col-span-4">
           <Card>
-            <CardContent sx={{ textAlign: 'center' }}>
-              <Avatar sx={{ width: 80, height: 80, mx: 'auto', mb: 2, bgcolor: 'primary.main' }}>
-                {user?.name?.charAt(0).toUpperCase() || <PersonIcon />}
+            <CardContent className="text-center">
+              <Avatar className="mx-auto mb-4 size-20">
+                <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
+                  {user?.name?.charAt(0).toUpperCase() || <UserIcon />}
+                </AvatarFallback>
               </Avatar>
-              <Typography variant="h6">{user?.name}</Typography>
-              <Typography variant="body2" color="text.secondary">{user?.email}</Typography>
+              <h2 className="text-base font-medium">{user?.name}</h2>
+              <p className="text-sm text-muted-foreground">{user?.email}</p>
               <Button
-                component={RouterLink}
-                to={pathsConfig.app.account}
-                variant="outlined"
-                size="small"
-                sx={{ mt: 2 }}
+                variant="outline"
+                size="sm"
+                className="mt-4"
+                nativeButton={false}
+                render={<Link to={pathsConfig.app.account} />}
               >
                 View Profile
               </Button>
             </CardContent>
           </Card>
-        </Grid>
+        </div>
 
-        <Grid size={{ xs: 12, md: 8 }}>
-          <Card sx={{ height: '100%' }}>
+        <div className="md:col-span-8">
+          <Card className="h-full">
             <CardContent>
-              <Typography variant="h6" gutterBottom>Quick Actions</Typography>
-              <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
-                <Button
-                  component={RouterLink}
-                  to={pathsConfig.app.account}
-                  variant="contained"
-                  startIcon={<SettingsIcon />}
-                >
+              <h2 className="mb-4 text-base font-medium">Quick Actions</h2>
+              <div className="flex flex-wrap gap-2">
+                <Button nativeButton={false} render={<Link to={pathsConfig.app.account} />}>
+                  <SettingsIcon />
                   Account Settings
                 </Button>
-                <Button
-                  variant="outlined"
-                  startIcon={<HistoryIcon />}
-                >
+                <Button variant="outline">
+                  <ClockIcon />
                   Activity Log
                 </Button>
-              </Stack>
+              </div>
             </CardContent>
           </Card>
-        </Grid>
+        </div>
 
-        <Grid size={{ xs: 12 }}>
+        <div className="md:col-span-12">
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>Recent Activity</Typography>
-              <Typography variant="body2" color="text.secondary">
+              <h2 className="mb-2 text-base font-medium">Recent Activity</h2>
+              <p className="text-sm text-muted-foreground">
                 No recent activity to display.
-              </Typography>
+              </p>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
-    </Box>
+        </div>
+      </div>
+    </div>
   )
 }

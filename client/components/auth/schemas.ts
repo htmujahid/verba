@@ -6,7 +6,6 @@ export interface SignInFormData {
 }
 
 export interface SignUpFormData {
-  name: string
   email: string
   password: string
 }
@@ -41,11 +40,6 @@ export const signInSchema: JSONSchemaType<SignInFormData> = {
 export const signUpSchema: JSONSchemaType<SignUpFormData> = {
   type: 'object',
   properties: {
-    name: {
-      type: 'string',
-      minLength: 1,
-      errorMessage: { minLength: 'Name is required' },
-    },
     email: {
       type: 'string',
       format: 'email',
@@ -58,7 +52,7 @@ export const signUpSchema: JSONSchemaType<SignUpFormData> = {
       errorMessage: { minLength: 'Password must be at least 8 characters' },
     },
   },
-  required: ['name', 'email', 'password'],
+  required: ['email', 'password'],
   additionalProperties: false,
 }
 
@@ -86,5 +80,43 @@ export const resetPasswordSchema: JSONSchemaType<ResetPasswordFormData> = {
     },
   },
   required: ['password'],
+  additionalProperties: false,
+}
+
+export interface TotpFormData {
+  code: string
+}
+
+export const totpSchema: JSONSchemaType<TotpFormData> = {
+  type: 'object',
+  properties: {
+    code: {
+      type: 'string',
+      minLength: 6,
+      maxLength: 6,
+      pattern: '^\\d{6}$',
+      errorMessage: { pattern: 'Please enter a valid 6-digit code' },
+    },
+  },
+  required: ['code'],
+  additionalProperties: false,
+}
+
+export interface OtpFormData {
+  code: string
+}
+
+export const otpSchema: JSONSchemaType<OtpFormData> = {
+  type: 'object',
+  properties: {
+    code: {
+      type: 'string',
+      minLength: 6,
+      maxLength: 6,
+      pattern: '^\\d{6}$',
+      errorMessage: { pattern: 'Please enter a valid 6-digit OTP' },
+    },
+  },
+  required: ['code'],
   additionalProperties: false,
 }

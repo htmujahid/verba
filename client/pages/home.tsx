@@ -1,33 +1,31 @@
-import { Box, Typography, Button, Card, CardContent, Stack } from '@mui/material'
-import { Link as RouterLink } from 'react-router'
+import { Link } from 'react-router'
+
+import { Button } from '@/client/components/ui/button'
+import { Card, CardContent } from '@/client/components/ui/card'
 
 export default function Home() {
   return (
-    <Box sx={{ textAlign: 'center' }}>
-      <Typography variant="h3" component="h1" gutterBottom fontWeight="bold">
-        Welcome Home
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+    <div className="text-center">
+      <h1 className="mb-2 text-4xl font-bold">Welcome Home</h1>
+      <p className="mb-8 text-muted-foreground">
         This is the home page of the application.
-      </Typography>
-      <Stack direction="row" spacing={2} justifyContent="center">
-        <Button component={RouterLink} to="/about" variant="contained">
+      </p>
+      <div className="flex justify-center gap-4">
+        <Button nativeButton={false} render={<Link to="/about" />}>
           Learn About Us
         </Button>
-        <Button component={RouterLink} to="/contact" variant="outlined">
+        <Button variant="outline" nativeButton={false} render={<Link to="/contact" />}>
           Contact Us
         </Button>
-      </Stack>
-      <Card sx={{ mt: 4, maxWidth: 400, mx: 'auto' }}>
+      </div>
+      <Card className="mx-auto mt-8 max-w-sm">
         <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Getting Started
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <h2 className="mb-2 text-base font-medium">Getting Started</h2>
+          <p className="text-sm text-muted-foreground">
             Explore the navigation above to learn more about this app.
-          </Typography>
+          </p>
         </CardContent>
       </Card>
-    </Box>
+    </div>
   )
 }

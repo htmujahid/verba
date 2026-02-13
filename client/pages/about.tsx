@@ -1,25 +1,25 @@
-import { Box, Typography, Paper } from '@mui/material'
+import { Card, CardContent } from '@/client/components/ui/card'
 
 export default function About() {
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto' }}>
-      <Typography variant="h3" component="h1" gutterBottom fontWeight="bold" textAlign="center">
-        About
-      </Typography>
-      <Paper sx={{ p: 4 }}>
-        <Typography variant="body1" sx={{ mb: 2 }}>
-          This is a React application built with Vite, Material-UI, and React Router.
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 2 }}>
-          It demonstrates a modern frontend setup with:
-        </Typography>
-        <Box component="ul" sx={{ pl: 2 }}>
-          <Typography component="li" variant="body1">React 18 with TypeScript</Typography>
-          <Typography component="li" variant="body1">Vite for fast development</Typography>
-          <Typography component="li" variant="body1">Material-UI components</Typography>
-          <Typography component="li" variant="body1">React Router for navigation</Typography>
-        </Box>
-      </Paper>
-    </Box>
+    <div className="mx-auto max-w-xl">
+      <h1 className="mb-6 text-center text-4xl font-bold">About</h1>
+      <Card>
+        <CardContent className="space-y-4">
+          <p>
+            This is a React application built with Vite, shadcn/ui, and React Router.
+          </p>
+          <p>
+            It demonstrates a modern frontend setup with:
+          </p>
+          <ul className="list-disc pl-6 space-y-1">
+            <li>React 18 with TypeScript</li>
+            <li>Vite for fast development</li>
+            <li>shadcn/ui components</li>
+            <li>React Router for navigation</li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

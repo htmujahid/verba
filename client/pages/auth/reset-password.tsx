@@ -1,67 +1,55 @@
-import { useState } from 'react'
-import { Link as RouterLink, useSearchParams, useNavigate } from 'react-router'
-import { Box, Button, Link, Paper, Typography, Alert } from '@mui/material'
+import { Link, useSearchParams } from 'react-router'
 
-import { ResetPasswordForm } from '@/client/components/auth/ResetPasswordForm'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/client/components/ui/card'
+import { ResetPasswordForm } from '@/client/components/auth/reset-password-form'
 
 export default function ResetPassword() {
-  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const token = searchParams.get('token')
-  const [success, setSuccess] = useState(false)
 
   if (!token) {
     return (
-      <Paper elevation={2} sx={{ p: 5, width: '100%' }}>
-        <Typography variant="h5" component="h1" fontWeight={600} textAlign="center" mb={3}>
-          Invalid Link
-        </Typography>
-        <Alert severity="error">
-          This password reset link is invalid or has expired.
-        </Alert>
-        <Box sx={{ mt: 3, textAlign: 'center' }}>
-          <Link component={RouterLink} to="/auth/forgot-password">
-            Request a new reset link
-          </Link>
-        </Box>
-      </Paper>
-    )
-  }
-
-  if (success) {
-    return (
-      <Paper elevation={2} sx={{ p: 5, width: '100%' }}>
-        <Typography variant="h5" component="h1" fontWeight={600} textAlign="center" mb={3}>
-          Password Reset
-        </Typography>
-        <Alert severity="success">
-          Your password has been reset successfully.
-        </Alert>
-        <Box sx={{ mt: 3, textAlign: 'center' }}>
-          <Button variant="contained" onClick={() => navigate('/auth/sign-in')}>
-            Sign In
-          </Button>
-        </Box>
-      </Paper>
+      <Card>
+        <CardHeader className="text-center">
+          <CardTitle className="text-xl">Invalid link</CardTitle>
+          <CardDescription>
+            This password reset link is invalid or has expired
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center">
+            <Link to="/auth/forgot-password" className="text-sm text-muted-foreground hover:underline">
+              Request a new reset link
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     )
   }
 
   return (
-    <Paper elevation={2} sx={{ p: 5, width: '100%' }}>
-      <Typography variant="h5" component="h1" fontWeight={600} textAlign="center" mb={2}>
-        Reset Password
-      </Typography>
-      <Typography variant="body2" color="text.secondary" textAlign="center" mb={3}>
-        Enter your new password.
-      </Typography>
+    <Card>
+      <CardHeader className="text-center">
+        <CardTitle className="text-xl">Reset password</CardTitle>
+        <CardDescription>
+          Enter your new password
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ResetPasswordForm token={token} />
 
-      <ResetPasswordForm token={token} onSuccess={() => setSuccess(true)} />
-
-      <Box sx={{ mt: 3, textAlign: 'center' }}>
-        <Link component={RouterLink} to="/auth/sign-in" color="text.secondary">
-          Back to Sign In
-        </Link>
-      </Box>
-    </Paper>
+        <div className="mt-6 text-center">
+          <Link to="/auth/sign-in" className="text-sm text-muted-foreground hover:underline">
+            Back to Sign In
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
