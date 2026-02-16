@@ -19,7 +19,7 @@ const clientDist = path.resolve(projectRoot, 'dist/client')
 async function createServer() {
   const app = express()
 
-  app.all("/api/auth/*path", toNodeHandler(auth)); // For ExpressJS v4
+  app.all("/api/*path", toNodeHandler(auth)); // For ExpressJS v4
 
   app.get("/api/me", async (req, res) => {
     const session = await auth.api.getSession({

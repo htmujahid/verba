@@ -9,16 +9,19 @@ import { ResourceLayout } from './components/layouts/resource-layout'
 
 const Home = lazy(() => import('./pages/home'))
 const Dashboard = lazy(() => import('./pages/home/index'))
+const Resource = lazy(() => import('./pages/resource/index'))
+
 const AccountLayout = lazy(() => import('./pages/account/index'))
 const AccountProfile = lazy(() => import('./pages/account/profile'))
 const AccountSecurity = lazy(() => import('./pages/account/security'))
 const AccountDanger = lazy(() => import('./pages/account/danger'))
+
 const SignIn = lazy(() => import('./pages/auth/sign-in'))
 const SignUp = lazy(() => import('./pages/auth/sign-up'))
 const ForgotPassword = lazy(() => import('./pages/auth/forgot-password'))
 const ResetPassword = lazy(() => import('./pages/auth/reset-password'))
-const TwoFactor = lazy(() => import('./pages/auth/two-factor/index'))
-const TwoFactorOtp = lazy(() => import('./pages/auth/two-factor/otp'))
+const TwoFactor = lazy(() => import('./pages/auth/two-factor'))
+const TwoFactorOtp = lazy(() => import('./pages/auth/two-factor-otp'))
 
 function PageLoader() {
   return (
@@ -53,8 +56,8 @@ function App() {
         </Route>
 
         <Route element={<ResourceLayout />}>
-          <Route path="resources" element={<ProtectedRoute />}>
-            hello world
+          <Route path="resource" element={<ProtectedRoute />}>
+            <Route path=":resource" element={<Resource />} />
           </Route>
         </Route>
 

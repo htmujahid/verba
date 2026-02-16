@@ -1,7 +1,7 @@
 import { useTransition } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { ajvResolver } from '@hookform/resolvers/ajv'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { Button } from '@/client/components/ui/button'
@@ -29,7 +29,7 @@ export function PasswordSignUpForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>({
-    resolver: ajvResolver(signUpSchema),
+    resolver: zodResolver(signUpSchema),
   })
 
   const onSubmit = (data: SignUpFormData) => {

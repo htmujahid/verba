@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from "react-router";
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
 import {
   QueryClient,
   QueryClientProvider,
@@ -17,13 +18,15 @@ const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <TooltipProvider>
-          <App />
-          <Toaster />
-        </TooltipProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <NuqsAdapter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <TooltipProvider>
+            <App />
+            <Toaster />
+          </TooltipProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </NuqsAdapter>
   </StrictMode>,
 )

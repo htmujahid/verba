@@ -1,7 +1,7 @@
 import { useTransition } from 'react'
 import { useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { ajvResolver } from '@hookform/resolvers/ajv'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { Button } from '@/client/components/ui/button'
@@ -25,7 +25,7 @@ export function ForgotPasswordForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<ForgotPasswordFormData>({
-    resolver: ajvResolver(forgotPasswordSchema),
+    resolver: zodResolver(forgotPasswordSchema),
   })
 
   const onSubmit = (data: ForgotPasswordFormData) => {

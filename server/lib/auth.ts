@@ -5,10 +5,13 @@ import appConfig from '../config/app.config.js';
 import { db } from '../database.js';
 import { sendMail } from './mailer.js';
 import { ac, allRoles } from './admin.js';
+import { resourcePlugin } from '../resource/plugin.js';
+import { resourceConfigs } from '../resource/index.js';
 
 export const auth = betterAuth({
   appName: appConfig.name,
   baseURL: appConfig.url,
+  basePath: '/api',
   database: {
     db,
     type: 'postgres',
@@ -108,6 +111,7 @@ export const auth = betterAuth({
         },
       },
     }),
+    resourcePlugin(resourceConfigs),
     openAPI({}),
   ],
 });

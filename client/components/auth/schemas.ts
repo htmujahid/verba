@@ -1,122 +1,39 @@
-import type { JSONSchemaType } from 'ajv'
+import * as z from 'zod'
 
-export interface SignInFormData {
-  email: string
-  password: string
-}
+export const signInSchema = z.object({
+  email: z.email('Please enter a valid email address'),
+  password: z.string().min(1, 'Password is required'),
+})
 
-export interface SignUpFormData {
-  email: string
-  password: string
-}
+export type SignInFormData = z.infer<typeof signInSchema>
 
-export interface ForgotPasswordFormData {
-  email: string
-}
+export const signUpSchema = z.object({
+  email: z.email('Please enter a valid email address'),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+})
 
-export interface ResetPasswordFormData {
-  password: string
-}
+export type SignUpFormData = z.infer<typeof signUpSchema>
 
-export const signInSchema: JSONSchemaType<SignInFormData> = {
-  type: 'object',
-  properties: {
-    email: {
-      type: 'string',
-      format: 'email',
-      minLength: 1,
-      errorMessage: { format: 'Please enter a valid email address' },
-    },
-    password: {
-      type: 'string',
-      minLength: 1,
-      errorMessage: { minLength: 'Password is required' },
-    },
-  },
-  required: ['email', 'password'],
-  additionalProperties: false,
-}
+export const forgotPasswordSchema = z.object({
+  email: z.email('Please enter a valid email address'),
+})
 
-export const signUpSchema: JSONSchemaType<SignUpFormData> = {
-  type: 'object',
-  properties: {
-    email: {
-      type: 'string',
-      format: 'email',
-      minLength: 1,
-      errorMessage: { format: 'Please enter a valid email address' },
-    },
-    password: {
-      type: 'string',
-      minLength: 8,
-      errorMessage: { minLength: 'Password must be at least 8 characters' },
-    },
-  },
-  required: ['email', 'password'],
-  additionalProperties: false,
-}
+export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>
 
-export const forgotPasswordSchema: JSONSchemaType<ForgotPasswordFormData> = {
-  type: 'object',
-  properties: {
-    email: {
-      type: 'string',
-      format: 'email',
-      minLength: 1,
-      errorMessage: { format: 'Please enter a valid email address' },
-    },
-  },
-  required: ['email'],
-  additionalProperties: false,
-}
+export const resetPasswordSchema = z.object({
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+})
 
-export const resetPasswordSchema: JSONSchemaType<ResetPasswordFormData> = {
-  type: 'object',
-  properties: {
-    password: {
-      type: 'string',
-      minLength: 8,
-      errorMessage: { minLength: 'Password must be at least 8 characters' },
-    },
-  },
-  required: ['password'],
-  additionalProperties: false,
-}
+export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>
 
-export interface TotpFormData {
-  code: string
-}
+export const totpSchema = z.object({
+  code: z.string().length(6).regex(/^\d{6}$/, 'Please enter a valid 6-digit code'),
+})
 
-export const totpSchema: JSONSchemaType<TotpFormData> = {
-  type: 'object',
-  properties: {
-    code: {
-      type: 'string',
-      minLength: 6,
-      maxLength: 6,
-      pattern: '^\\d{6}$',
-      errorMessage: { pattern: 'Please enter a valid 6-digit code' },
-    },
-  },
-  required: ['code'],
-  additionalProperties: false,
-}
+export type TotpFormData = z.infer<typeof totpSchema>
 
-export interface OtpFormData {
-  code: string
-}
+export const otpSchema = z.object({
+  code: z.string().length(6).regex(/^\d{6}$/, 'Please enter a valid 6-digit OTP'),
+})
 
-export const otpSchema: JSONSchemaType<OtpFormData> = {
-  type: 'object',
-  properties: {
-    code: {
-      type: 'string',
-      minLength: 6,
-      maxLength: 6,
-      pattern: '^\\d{6}$',
-      errorMessage: { pattern: 'Please enter a valid 6-digit OTP' },
-    },
-  },
-  required: ['code'],
-  additionalProperties: false,
-}
+export type OtpFormData = z.infer<typeof otpSchema>

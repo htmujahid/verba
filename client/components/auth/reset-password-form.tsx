@@ -1,7 +1,7 @@
 import { useTransition } from 'react'
 import { useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { ajvResolver } from '@hookform/resolvers/ajv'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 
 import { Button } from '@/client/components/ui/button'
@@ -30,7 +30,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<ResetPasswordFormData>({
-    resolver: ajvResolver(resetPasswordSchema),
+    resolver: zodResolver(resetPasswordSchema),
   })
 
   const onSubmit = (data: ResetPasswordFormData) => {

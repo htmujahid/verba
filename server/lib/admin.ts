@@ -5,6 +5,21 @@ import {
   defaultStatements,
   userAc,
 } from 'better-auth/plugins/admin/access';
+import { resourceConfigs } from '../resource/index.js';
+
+// Build resource statements dynamically from configs
+const resourceStatements: Record<string, readonly string[]> = {};
+const resourcePermissions: Record<string, string[]> = {};
+
+for (const config of resourceConfigs) {
+  resourceStatements[config.name] = config.permissions;
+  resourcePermissions[config.name] = [...config.permissions];
+}
+
+export const statement = {
+  ...resourceStatements,
+  ...defaultStatements,
+} as const;
 
 export type Role = keyof typeof allRoles;
 
@@ -12,20 +27,15 @@ export type Permissions = {
   [k in keyof typeof statement]?: SubArray<(typeof statement)[k]>;
 };
 
-export const statement = {
-  task: ['create', 'read', 'update', 'delete'],
-  ...defaultStatements,
-} as const;
-
 export const ac = createAccessControl(statement);
 
 const adminRole = ac.newRole({
-  task: ['create', 'read', 'update', 'delete'],
+  ...resourcePermissions,
   ...adminAc.statements,
 });
 
 const userRole = ac.newRole({
-  task: ['create', 'read', 'update', 'delete'],
+  ...resourcePermissions,
   ...userAc.statements,
 });
 

@@ -1,7 +1,7 @@
 import { useState, useTransition } from 'react'
 import { useNavigate } from 'react-router'
 import { useForm } from 'react-hook-form'
-import { ajvResolver } from '@hookform/resolvers/ajv'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { Mail } from 'lucide-react'
 
@@ -29,7 +29,7 @@ export function OtpForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<OtpFormData>({
-    resolver: ajvResolver(otpSchema),
+    resolver: zodResolver(otpSchema),
   })
 
   const requestOtp = () => {
