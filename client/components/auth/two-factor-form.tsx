@@ -15,7 +15,7 @@ import {
 } from '@/client/components/ui/field'
 import { authClient } from '@/client/lib/auth-client'
 import { totpSchema, type TotpFormData } from './schemas'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function TwoFactorForm() {
   const navigate = useNavigate()

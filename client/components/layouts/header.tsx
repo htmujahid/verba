@@ -14,7 +14,7 @@ import {
   DropdownMenuLabel,
 } from '@/client/components/ui/dropdown-menu'
 import { authClient } from '@/client/lib/auth-client'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function Header() {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import { Button } from '@/client/components/ui/button'
 import { authClient } from '@/client/lib/auth-client'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (

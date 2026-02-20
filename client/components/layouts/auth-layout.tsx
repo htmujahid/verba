@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router'
 import { Spinner } from '@/client/components/ui/spinner'
 import { Logo } from '@/client/components/logo'
 import { authClient } from '@/client/lib/auth-client'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function AuthLayout() {
   const { data: session, isPending } = authClient.useSession()

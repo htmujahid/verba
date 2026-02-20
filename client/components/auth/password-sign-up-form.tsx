@@ -18,7 +18,7 @@ import {
 import { authClient } from '@/client/lib/auth-client'
 import { OAuthProviders } from './oauth-providers'
 import { signUpSchema, type SignUpFormData } from './schemas'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function PasswordSignUpForm() {
   const navigate = useNavigate()

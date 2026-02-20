@@ -17,7 +17,7 @@ import {
 } from '@/client/components/ui/field'
 import { authClient } from '@/client/lib/auth-client'
 import { otpSchema, type OtpFormData } from './schemas'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function OtpForm() {
   const navigate = useNavigate()

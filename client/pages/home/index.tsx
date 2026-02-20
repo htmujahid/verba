@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/client/components/ui/card'
 import { Button } from '@/client/components/ui/button'
 import { Avatar, AvatarFallback } from '@/client/components/ui/avatar'
 import { authClient } from '@/client/lib/auth-client'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export default function Dashboard() {
   const { data: session } = authClient.useSession()

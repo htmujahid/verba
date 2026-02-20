@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from 'react-router'
 
 import { Spinner } from '@/client/components/ui/spinner'
 import { authClient } from '@/client/lib/auth-client'
-import pathsConfig from '@/shared/config/paths.config'
+import pathsConfig from '@/client/config/paths.config'
 
 export function ProtectedRoute() {
   const location = useLocation()
