@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { NavMain } from "@/client/components/layouts/nav-main"
+import { NavResources } from "@/client/components/layouts/nav-resources"
 import { NavProjects } from "@/client/components/layouts/nav-projects"
 import { NavUser } from "@/client/components/layouts/nav-user"
 import { ModuleSwitcher } from "@/client/components/layouts/module-switcher"
@@ -13,62 +13,68 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/client/components/ui/sidebar"
-import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
+import {
+  LayoutDashboard,
+  ListChecks,
+  BarChart3,
+  GalleryVerticalEnd,
+  AudioLines,
+  Terminal,
+  TerminalSquare,
+  Bot,
+  BookOpen,
+  Settings,
+  Frame,
+  PieChart,
+  MapPin,
+  SettingsIcon,
+  HelpCircleIcon,
+  SearchIcon,
+} from "lucide-react"
+import { NavMain } from "./nav-main"
+import { NavSecondary } from "./nav-secondary"
 
 // This is sample data.
 const data = {
   modules: [
     {
       name: "Acme Inc",
-      logo: (
-        <GalleryVerticalEndIcon
-        />
-      ),
+      logo: <GalleryVerticalEnd />,
       plan: "Enterprise",
     },
     {
       name: "Acme Corp.",
-      logo: (
-        <AudioLinesIcon
-        />
-      ),
+      logo: <AudioLines />,
       plan: "Startup",
     },
     {
       name: "Evil Corp.",
-      logo: (
-        <TerminalIcon
-        />
-      ),
+      logo: <Terminal />,
       plan: "Free",
     },
   ],
   navMain: [
+    { title: "Dashboard", url: "#", icon: <LayoutDashboard /> },
+    { title: "Lifecycle", url: "#", icon: <ListChecks /> },
+    { title: "Analytics", url: "#", icon: <BarChart3 /> },
+  ],
+  navResources: [
     {
       title: "Projects",
       url: "#",
-      icon: (
-        <TerminalSquareIcon
-        />
-      ),
+      icon: <TerminalSquare />,
       items: [],
     },
     {
       title: "Tasks",
       url: "#",
-      icon: (
-        <BotIcon
-        />
-      ),
+      icon: <Bot />,
       items: [],
     },
     {
       title: "Documentation",
       url: "#",
-      icon: (
-        <BookOpenIcon
-        />
-      ),
+      icon: <BookOpen />,
       items: [
         {
           title: "Introduction",
@@ -91,10 +97,7 @@ const data = {
     {
       title: "Settings",
       url: "#",
-      icon: (
-        <Settings2Icon
-        />
-      ),
+      icon: <Settings />,
       items: [
         {
           title: "General",
@@ -116,29 +119,25 @@ const data = {
     },
   ],
   projects: [
+    { name: "Design Engineering", url: "#", icon: <Frame /> },
+    { name: "Sales & Marketing", url: "#", icon: <PieChart /> },
+    { name: "Travel", url: "#", icon: <MapPin /> },
+  ],
+  navSecondary: [
     {
-      name: "Design Engineering",
+      title: "Settings",
       url: "#",
-      icon: (
-        <FrameIcon
-        />
-      ),
+      icon: <SettingsIcon />,
     },
     {
-      name: "Sales & Marketing",
+      title: "Get Help",
       url: "#",
-      icon: (
-        <PieChartIcon
-        />
-      ),
+      icon: <HelpCircleIcon />,
     },
     {
-      name: "Travel",
+      title: "Search",
       url: "#",
-      icon: (
-        <MapIcon
-        />
-      ),
+      icon: <SearchIcon />,
     },
   ],
 }
@@ -150,10 +149,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <ModuleSwitcher modules={data.modules} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain title="Resources" items={data.navMain} />
+        <NavMain items={data.navMain} />
+        <NavResources title="Resources" items={data.navResources} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
+        <NavSecondary items={data.navSecondary} />
         <NavUser />
       </SidebarFooter>
       <SidebarRail />

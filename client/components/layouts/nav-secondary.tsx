@@ -1,33 +1,36 @@
 "use client"
 
+import * as React from "react"
+
 import {
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/client/components/ui/sidebar"
 
-export function NavMain({
+export function NavSecondary({
   items,
+  ...props
 }: {
   items: {
     title: string
     url: string
-    icon?: React.ReactNode
+    icon: React.ReactNode
   }[]
-}) {
+} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
-    <SidebarGroup>
+    <SidebarGroup {...props}>
       <SidebarGroupContent>
-        <SidebarGroupLabel>Home</SidebarGroupLabel>
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon}
-                <span>{item.title}</span>
+              <SidebarMenuButton asChild>
+                <a href={item.url}>
+                  {item.icon}
+                  <span>{item.title}</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
