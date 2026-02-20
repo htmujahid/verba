@@ -1,7 +1,6 @@
 import { betterAuth } from 'better-auth';
 import { admin, openAPI, twoFactor } from 'better-auth/plugins';
 
-import appConfig from '../config/app.config.js';
 import { db } from '../database.js';
 import { sendMail } from './mailer.js';
 import { ac, allRoles } from './admin.js';
@@ -9,8 +8,8 @@ import { resourcePlugin } from '../resource/plugin.js';
 import { resourceConfigs } from '../resource/index.js';
 
 export const auth = betterAuth({
-  appName: appConfig.name,
-  baseURL: appConfig.url,
+  appName: process.env.VITE_APP_NAME,
+  baseURL: process.env.VITE_BASE_URL,
   basePath: '/api',
   database: {
     db,
