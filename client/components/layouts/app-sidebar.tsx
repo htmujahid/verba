@@ -17,11 +17,6 @@ import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIco
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   modules: [
     {
       name: "Acme Inc",
@@ -50,49 +45,22 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Projects",
       url: "#",
       icon: (
         <TerminalSquareIcon
         />
       ),
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+      items: [],
     },
     {
-      title: "Models",
+      title: "Tasks",
       url: "#",
       icon: (
         <BotIcon
         />
       ),
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      items: [],
     },
     {
       title: "Documentation",
@@ -182,7 +150,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <ModuleSwitcher modules={data.modules} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain title="Resources" items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
